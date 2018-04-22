@@ -68,10 +68,11 @@ public class IncomingReader implements Runnable {
 		}
 
 	}
-	public class Setusername implements ActionListener {
+	public class Setusername implements ActionListener{
 
 		public void actionPerformed(ActionEvent arg1) {
 			usernamef = usernamefield.getText();
+			System.out.println("Username Set as " + usernamef);
 
 		}
 
@@ -104,7 +105,7 @@ public class IncomingReader implements Runnable {
 		JButton serverButton = new JButton("SET SERVER");
 		JButton username = new JButton("SET USERNAME");
 		serverButton.addActionListener(new SereverListener());
-		username.addActionListener(new SereverListener());
+		username.addActionListener(new Setusername());
 		serverpanel.add(server);   
 		serverpanel.add(serverButton);
 		serverpanel.add(usernamefield);
