@@ -22,7 +22,6 @@ import javax.swing.text.DefaultCaret;
 import javax.swing.text.Document;
 import javax.swing.text.Element;
 import javax.swing.text.Position;
-
 import javax.swing.text.Segment;
 
 public class SimpleChatClient {
@@ -50,7 +49,7 @@ public class IncomingReader implements Runnable {
 
 		public void actionPerformed(ActionEvent arg0) {
 			try {
-				writer.println(System.getProperty("user.name")+" :  "+outgoing.getText());
+				writer.println( usernamefield.getText() +" :  "+outgoing.getText());
 				writer.flush();
 				outgoing.setText("");
 			} catch (Exception e) {
@@ -69,13 +68,23 @@ public class IncomingReader implements Runnable {
 		}
 
 	}
+	public class Setusername implements ActionListener {
+
+		public void actionPerformed(ActionEvent arg1) {
+			usernamef = usernamefield.getText();
+
+		}
+
+	}
 	
 	JTextArea incoming;
 	JTextField outgoing;
 	BufferedReader reader;
 	PrintWriter writer;
 	JTextField server;
+	JTextField usernamefield;
 	String serverIP;
+	String usernamef;
 	Socket sock;
 	JScrollPane qScroller;
 	
@@ -90,12 +99,19 @@ public class IncomingReader implements Runnable {
 		
 		// Panel for server setup.
 		JPanel serverpanel = new JPanel();
+		usernamefield = new JTextField(10);
 		server = new JTextField(10);
 		JButton serverButton = new JButton("SET SERVER");
+		JButton username = new JButton("SET USERNAME");
 		serverButton.addActionListener(new SereverListener());
-		serverpanel.add(server);
+		username.addActionListener(new SereverListener());
+		serverpanel.add(server);   
 		serverpanel.add(serverButton);
+		serverpanel.add(usernamefield);
+		serverpanel.add(username);
 		
+
+				
 		// Panel for adding all the components.
 		JPanel mainpanel = new JPanel();
 		mainpanel.setLayout(new BoxLayout(mainpanel,BoxLayout.Y_AXIS));
