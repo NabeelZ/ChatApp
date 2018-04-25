@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -26,7 +27,7 @@ import javax.swing.text.Document;
 import javax.swing.text.Element;
 import javax.swing.text.Position;
 import javax.swing.text.Segment;
-
+import java.awt.event.MouseAdapter;
 
 public class SimpleChatClient {
 
@@ -73,8 +74,6 @@ public class SimpleChatClient {
 			System.out.println("Username Set as " + usernamefield.getText());
 		}
 	}
-	
-	
 
 	JTextArea incoming;
 	JTextField outgoing;
@@ -106,7 +105,21 @@ public class SimpleChatClient {
 		serverpanel.add(serverButton);
 		usernamefield.setText("Username");
 		server.setText("Server");
-		
+		usernamefield.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				usernamefield.setText("");
+			}
+
+		});
+		server.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				server.setText("");
+			}
+
+		});
+
 		// Panel for adding all the components.
 		JPanel mainpanel = new JPanel();
 		mainpanel.setLayout(new BoxLayout(mainpanel, BoxLayout.Y_AXIS));
