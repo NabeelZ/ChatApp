@@ -105,21 +105,7 @@ public class SimpleChatClient {
 		serverpanel.add(serverButton);
 		usernamefield.setText("Username");
 		server.setText("Server");
-		usernamefield.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				usernamefield.setText("");
-			}
-
-		});
-		server.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				server.setText("");
-			}
-
-		});
-
+		
 		// Panel for adding all the components.
 		JPanel mainpanel = new JPanel();
 		mainpanel.setLayout(new BoxLayout(mainpanel, BoxLayout.Y_AXIS));
